@@ -4,8 +4,28 @@
       Customised Solutions for the School's Specific Needs
     </h3>
     <div class="plans-container">
+      <!-- Skeleton loader (while loading data) -->
+      <el-skeleton v-if="loading" :rows="5" class="skeleton-loader">
+        <template #default>
+          <el-table class="custom-table" :data="[]">
+            <el-table-column label="Features" align="center"></el-table-column>
+            <el-table-column
+              v-for="(plan, index) in placeholderPlans"
+              :key="index"
+              :label="plan.label"
+              align="center"
+            >
+              <template v-slot="scope">
+                <el-skeleton :loading="loading" />
+              </template>
+            </el-table-column>
+          </el-table>
+        </template>
+      </el-skeleton>
+
+      <!-- Actual table (once data is loaded) -->
       <el-table
-        v-if="plans.length > 0"
+        v-if="!loading && plans.length > 0"
         :data="featureKeys.map((key) => ({ feature: key }))"
         class="custom-table"
       >
@@ -23,6 +43,16 @@
           :label="plan.plan"
           align="center"
         >
+          <template #header>
+            <div class="plan-header">
+              <span>{{ plan.plan }}</span>
+              <!-- Display 'Recommended' label if applicable -->
+              <div v-if="plan.recommended" class="recommended-label">
+                Recommended
+              </div>
+            </div>
+          </template>
+
           <template v-slot="scope">
             <transition name="fade">
               <el-icon
@@ -45,19 +75,26 @@ export default {
     return {
       plans: [],
       featureKeys: [],
+      loading: true, // Track loading state
+      placeholderPlans: [
+        // Placeholder for skeleton columns
+        { label: "Student Plan" },
+        { label: "Enterprise Plan" },
+      ],
     };
   },
   async mounted() {
     try {
-      const response = await axios.get("/plans.json"); 
+      const response = await axios.get("/plans.json");
       this.plans = response.data;
       this.featureKeys = this.getFeatureKeys();
+      this.loading = false; // Data has loaded, hide skeleton
     } catch (error) {
       console.error("Error fetching plans:", error);
+      this.loading = false; // Hide skeleton even if there's an error
     }
   },
   methods: {
-    
     getFeatureKeys() {
       const allFeatures = new Set();
       this.plans.forEach((plan) => {
@@ -107,10 +144,11 @@ export default {
   background: gold;
   color: black;
   font-weight: bold;
-  font-size: 7px;
-  padding: 0 6px;
+  font-size: 8px;
+  padding: 2px 6px;
   border-radius: 5px;
   margin-bottom: 3px;
+  width: 28%;
 }
 
 .el-table-column__header {
@@ -153,7 +191,28 @@ export default {
   opacity: 0;
 }
 
-/* Mobile responsiveness */
+.plan-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skeleton-loader .el-table {
+  background: #f5f5f5; /* Light gray background */
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.skeleton-loader .el-table-column {
+  padding: 10px 0;
+}
+
+.el-skeleton__element {
+  background-color: #ccc;
+  border-radius: 4px;
+  height: 100%;
+}
+
 @media (max-width: 768px) {
   .plans-container {
     width: 85%;
@@ -168,8 +227,8 @@ export default {
   }
 
   .recommended-label {
-    font-size: 5px;
-    padding: 3px 5px;
+    font-size: 7px;
+    padding: 1px 4px;
     margin-bottom: 2px;
   }
 
@@ -194,8 +253,8 @@ export default {
   }
 
   .recommended-label {
-    font-size: 4px;
-    padding: 2px 4px;
+    font-size: 6px;
+    padding: 1px 3px;
   }
 
   .el-table {

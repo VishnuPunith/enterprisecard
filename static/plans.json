@@ -2,6 +2,7 @@
   {
     "plan": "Student Plan",
     "price": 1999,
+    "recommended": true,
     "features": {
       "Self-Assessment": true,
       "Study Material": true,
@@ -19,6 +20,7 @@
   {
     "plan": "Enterprise Plan",
     "price": 5999,
+    "recommended": false,
     "features": {
       "Self-Assessment": true,
       "Study Material": true,
