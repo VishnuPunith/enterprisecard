@@ -1,0 +1,36 @@
+[
+  {
+    "plan": "Student Plan",
+    "price": 1999,
+    "features": {
+      "Self-Assessment": true,
+      "Study Material": true,
+      "Live Classes": true,
+      "Animated Videos": true,
+      "Talent Showcasing": true,
+      "Extra Curriculars": true,
+      "Spoken English": true,
+      "Scheduled Live Classes": false,
+      "Video Content for 6 Subjects": false,
+      "Assessments": false,
+      "Stream on TV/PC": false
+    }
+  },
+  {
+    "plan": "Enterprise Plan",
+    "price": 5999,
+    "features": {
+      "Self-Assessment": true,
+      "Study Material": true,
+      "Live Classes": true,
+      "Animated Videos": true,
+      "Talent Showcasing": true,
+      "Extra Curriculars": true,
+      "Spoken English": true,
+      "Scheduled Live Classes": true,
+      "Video Content for 6 Subjects": true,
+      "Assessments": true,
+      "Stream on TV/PC": true
+    }
+  }
+]
