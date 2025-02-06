@@ -1,7 +1,7 @@
 <template>
   <div class="plans-table">
     <h3 class="table-title">
-      Customised Solutions for the School's Specific needs
+      Customised Solutions for the School's Specific Needs
     </h3>
     <div class="plans-container">
       <el-table
@@ -9,37 +9,24 @@
         :data="featureKeys.map((key) => ({ feature: key }))"
         class="custom-table"
       >
+        <!-- Column for Features -->
         <el-table-column
           prop="feature"
           label="Features"
           align="center"
         ></el-table-column>
 
-        <!-- Column for Student Plan -->
-        <el-table-column>
-          <template #header>
-            <div class="header-content">
-              <span>Student Plan</span>
-              <div class="recommended-label">Recommended</div>
-            </div>
-          </template>
+        <!-- Loop through plans dynamically to create a column for each -->
+        <el-table-column
+          v-for="(plan, index) in plans"
+          :key="plan.plan"
+          :label="plan.plan"
+          align="center"
+        >
           <template v-slot="scope">
             <transition name="fade">
               <el-icon
-                v-if="plans[0].features[scope.row.feature]"
-                class="el-icon-check"
-              ></el-icon>
-              <el-icon v-else class="el-icon-close"></el-icon>
-            </transition>
-          </template>
-        </el-table-column>
-
-        <!-- Column for Enterprise Plan -->
-        <el-table-column label="Enterprise Plan" align="center">
-          <template v-slot="scope">
-            <transition name="fade">
-              <el-icon
-                v-if="plans[1].features[scope.row.feature]"
+                v-if="plan.features[scope.row.feature]"
                 class="el-icon-check"
               ></el-icon>
               <el-icon v-else class="el-icon-close"></el-icon>
@@ -62,18 +49,24 @@ export default {
   },
   async mounted() {
     try {
-      const response = await axios.get("/plans.json");
+      const response = await axios.get("/plans.json"); 
       this.plans = response.data;
+      this.featureKeys = this.getFeatureKeys();
+    } catch (error) {
+      console.error("Error fetching plans:", error);
+    }
+  },
+  methods: {
+    
+    getFeatureKeys() {
       const allFeatures = new Set();
       this.plans.forEach((plan) => {
         Object.keys(plan.features).forEach((feature) =>
           allFeatures.add(feature)
         );
       });
-      this.featureKeys = Array.from(allFeatures);
-    } catch (error) {
-      console.error("Error fetching plans:", error);
-    }
+      return Array.from(allFeatures); // Convert the set into an array
+    },
   },
 };
 </script>
