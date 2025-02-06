@@ -1,11 +1,13 @@
 <template>
-  <div class="cards-list">
-    <DynamicCard v-for="(card, index) in cards" :key="index" :card="card" />
+  <div class="container">
+    <div class="cards-list">
+      <DynamicCard v-for="(card, index) in cards" :key="index" :card="card" />
+    </div>
   </div>
 </template>
 
 <script>
-import DynamicCard from '@/components/DynamicCard.vue'
+import DynamicCard from "@/components/DynamicCard.vue";
 
 export default {
   components: {
@@ -13,14 +15,14 @@ export default {
   },
   async asyncData({ $axios }) {
     try {
-      const cards = await $axios.$get('/cards.json')
-      return { cards }
+      const cards = await $axios.$get("/cards.json");
+      return { cards };
     } catch (error) {
-      console.error('Error loading cards:', error)
-      return { cards: [] }
+      console.error("Error loading cards:", error);
+      return { cards: [] };
     }
   },
-}
+};
 </script>
 
 <style scoped>

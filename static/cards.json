@@ -1,12 +1,54 @@
 [
   {
-    "title": "400 Students Plan",
-    "services_count": 26,
+    "title": "500 Students Plan",
+    "services_count": 28,
     "image": "badge.png",
     "services": [
-      "400 Dedicated Applications",
-      "10 Projectors",
-      "49 School license",
+      "500 Dedicated Applications",
+      "12 Projectors",
+      "55 School license",
+      "03 Students Workshop",
+      "03 Parents Workshop",
+      "03 Teacher Workshop",
+      "Offline/Online Teachers Training",
+      "Collaboration Banner",
+      "Coding Classes workshop",
+      "Website for School",
+      "Relationship Manager",
+      "Dedicated Teachers Training",
+      "Dedicated 24/7 Customer Support",
+      "14 Service Visits yearly"
+    ]
+  },
+  {
+    "title": "1000 Students Plan",
+    "services_count": 30,
+    "image": "badge.png",
+    "services": [
+      "1000 Dedicated Applications",
+      "15 Projectors",
+      "75 School license",
+      "04 Students Workshop",
+      "04 Parents Workshop",
+      "04 Teacher Workshop",
+      "Offline/Online Teachers Training",
+      "Collaboration Banner",
+      "Coding Classes workshop",
+      "Website for School",
+      "Relationship Manager",
+      "Dedicated Teachers Training",
+      "Dedicated 24/7 Customer Support",
+      "16 Service Visits yearly"
+    ]
+  },
+  {
+    "title": "200 Students Plan",
+    "services_count": 24,
+    "image": "badge.png",
+    "services": [
+      "200 Dedicated Applications",
+      "08 Projectors",
+      "35 School license",
       "02 Students Workshop",
       "02 Parents Workshop",
       "02 Teacher Workshop",
@@ -17,7 +59,70 @@
       "Relationship Manager",
       "Dedicated Teachers Training",
       "Dedicated 24/7 Customer Support",
+      "10 Service Visits yearly"
+    ]
+  },
+  {
+    "title": "750 Students Plan",
+    "services_count": 32,
+    "image": "badge.png",
+    "services": [
+      "750 Dedicated Applications",
+      "18 Projectors",
+      "60 School license",
+      "05 Students Workshop",
+      "05 Parents Workshop",
+      "05 Teacher Workshop",
+      "Offline/Online Teachers Training",
+      "Collaboration Banner",
+      "Coding Classes workshop",
+      "Website for School",
+      "Relationship Manager",
+      "Dedicated Teachers Training",
+      "Dedicated 24/7 Customer Support",
+      "18 Service Visits yearly"
+    ]
+  },
+  {
+    "title": "300 Students Plan",
+    "services_count": 27,
+    "image": "badge.png",
+    "services": [
+      "300 Dedicated Applications",
+      "10 Projectors",
+      "45 School license",
+      "03 Students Workshop",
+      "03 Parents Workshop",
+      "03 Teacher Workshop",
+      "Offline/Online Teachers Training",
+      "Collaboration Banner",
+      "Coding Classes workshop",
+      "Website for School",
+      "Relationship Manager",
+      "Dedicated Teachers Training",
+      "Dedicated 24/7 Customer Support",
       "12 Service Visits yearly"
+    ]
+  },
+  {
+    "title": "1500 Students Plan",
+    "services_count": 35,
+    "image": "badge.png",
+    "services": [
+      "1500 Dedicated Applications",
+      "20 Projectors",
+      "100 School license",
+      "06 Students Workshop",
+      "06 Parents Workshop",
+      "06 Teacher Workshop",
+      "Offline/Online Teachers Training",
+      "Collaboration Banner",
+      "Coding Classes workshop",
+      "Website for School",
+      "Relationship Manager",
+      "Dedicated Teachers Training",
+      "Dedicated 24/7 Customer Support",
+      "20 Service Visits yearly"
     ]
   }
 ]

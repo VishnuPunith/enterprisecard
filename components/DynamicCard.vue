@@ -1,7 +1,7 @@
 <template>
   <div class="card-container">
     <div class="card-main">
-      <div class="">
+      <div class="card-wrapper">
         <div class="card-yellow"></div>
         <div class="card-blue"></div>
         <div class="card-content">
@@ -14,7 +14,10 @@
               {{ service }}
             </li>
           </ul>
-          <button class="select-button">Select</button>
+          <button class="select-button" @click="toggleSelection">
+            <span class="toggle-dot" :class="{ toggled: isSelected }"></span>
+            {{ isSelected ? "Selected" : "Select" }}
+          </button>
         </div>
       </div>
     </div>
@@ -26,7 +29,17 @@ export default {
   props: {
     card: Object,
   },
-}
+  data() {
+    return {
+      isSelected: false,
+    };
+  },
+  methods: {
+    toggleSelection() {
+      this.isSelected = !this.isSelected;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -36,15 +49,20 @@ export default {
   position: relative;
 }
 
+.card-wrapper {
+  position: relative;
+  z-index: 2;
+}
+
 .card-yellow {
   width: 100%;
   height: 30%;
-  background: linear-gradient(to right, #F5EA21, #F5EA21); /* Yellow gradient */
+  background: linear-gradient(to right, #f5ea21, #f5ea21);
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
-  clip-path: polygon(0 0, 100% 0, 0 100%);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
 }
 
 .card-blue {
@@ -59,7 +77,7 @@ export default {
 }
 
 .card-main {
-  width: 250px;
+  width: 220px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -82,7 +100,7 @@ export default {
 .card-content h2 {
   font-size: 2em;
   margin: 10px 0;
-  color: white;
+  color: #fff;
 }
 
 .badge {
@@ -92,9 +110,8 @@ export default {
 }
 
 .services-list {
-  list-style: none;
   padding: 0;
-  margin:0;
+  margin: 0;
   text-align: left;
   font-size: smaller;
 }
@@ -104,12 +121,34 @@ export default {
 }
 
 .select-button {
-  background: #007bff;
+  background: linear-gradient(to right, #004562, #015d7f);
   color: white;
-  padding: 8px 15px;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
   margin-top: 15px;
+  position: relative;
+  transition: background 0.3s ease;
+  width: 150px;
+  height: 45px;
+}
+
+.select-button:active {
+  background: linear-gradient(to right, #004562, #015d7f);
+}
+
+.select-button .toggle-dot {
+  position: absolute;
+  top: 5px;
+  left: 4px;
+  width: 34px;
+  height: 34px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.select-button .toggle-dot.toggled {
+  transform: translateX(105px);
 }
 </style>
