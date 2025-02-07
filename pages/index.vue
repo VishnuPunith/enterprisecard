@@ -1,9 +1,9 @@
 <template>
-  <div class="container">
-    <div class="plans-container">
+  <div class="layout-wrapper">
+    <div class="table-section">
       <PlanTable />
     </div>
-    <div class="cards-list">
+    <div class="cards-wrapper">
       <DynamicCard v-for="(card, index) in cards" :key="index" :card="card" />
     </div>
   </div>
@@ -31,10 +31,10 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.layout-wrapper {
   overflow: hidden;
 }
-.cards-list {
+.cards-wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;

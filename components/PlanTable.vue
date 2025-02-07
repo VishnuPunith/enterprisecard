@@ -127,8 +127,8 @@ export default {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.custom-table ::v-deep th,
-.custom-table ::v-deep td {
+.custom-table /deep/ th,
+.custom-table /deep/ td {
   text-align: center !important;
   font-weight: bold;
   padding: 6px 0;
@@ -148,17 +148,19 @@ export default {
   padding: 2px 6px;
   border-radius: 5px;
   margin-bottom: 3px;
-  width: 28%;
+  width: fit-content;
 }
 
-.el-table-column__header {
+.plan-header {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.el-table {
-  font-size: 12px;
-  height: auto;
+.skeleton-loader .custom-table {
+  background: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .el-icon-check {
@@ -181,38 +183,18 @@ export default {
   transform: scale(1.2);
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
+/* Fix Element UI Table styles from affecting other components */
+.custom-table {
+  font-size: 12px;
+  height: auto;
 }
 
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
+.custom-table /deep/ th,
+.custom-table /deep/ td {
+  padding: 6px 8px;
 }
 
-.plan-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.skeleton-loader .el-table {
-  background: #f5f5f5; /* Light gray background */
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.skeleton-loader .el-table-column {
-  padding: 10px 0;
-}
-
-.el-skeleton__element {
-  background-color: #ccc;
-  border-radius: 4px;
-  height: 100%;
-}
-
+/* Responsive styles */
 @media (max-width: 768px) {
   .plans-container {
     width: 85%;
@@ -229,10 +211,9 @@ export default {
   .recommended-label {
     font-size: 7px;
     padding: 1px 4px;
-    margin-bottom: 2px;
   }
 
-  .el-table {
+  .custom-table {
     font-size: 10px;
   }
 
@@ -241,8 +222,8 @@ export default {
     font-size: 16px;
   }
 
-  .custom-table ::v-deep th,
-  .custom-table ::v-deep td {
+  .custom-table /deep/ th,
+  .custom-table /deep/ td {
     padding: 5px 2px;
   }
 }
@@ -257,7 +238,7 @@ export default {
     padding: 1px 3px;
   }
 
-  .el-table {
+  .custom-table {
     font-size: 9px;
   }
 
@@ -266,8 +247,8 @@ export default {
     font-size: 14px;
   }
 
-  .custom-table ::v-deep th,
-  .custom-table ::v-deep td {
+  .custom-table /deep/ th,
+  .custom-table /deep/ td {
     padding: 4px 2px;
   }
 }
